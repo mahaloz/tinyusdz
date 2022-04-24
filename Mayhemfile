@@ -1,0 +1,5 @@
+project: tinyusdz
+target: fuzzme
+
+cmds:
+  - cmd: /fuzzme
