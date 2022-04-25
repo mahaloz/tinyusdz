@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y bsdutils python3-dev python-pip \
 
 # ----- target ----- #
 # get source and compile
-RUN git clone https://github.com/mahaloz/tinyusdz.git && \
-    cd /tinyusdz/tests/fuzzer && \
+COPY . /tinyusdz
+RUN cd /tinyusdz/tests/fuzzer && \
     CXX=clang++ CC=clang meson build -Db_sanitize=address && \
     cd build && \
     ninja && \
-    cp fuzz_usdaparser /fuzzme
+    cp fuzz_usdaparser /fuzz_usdaparser_full

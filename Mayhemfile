@@ -1,5 +1,5 @@
 project: tinyusdz
-target: fuzzme
+target: usdaparser
 
 cmds:
-  - cmd: /fuzzme
+  - cmd: /fuzz_usdaparser_full
