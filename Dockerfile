@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as builder
 
 USER root 
 RUN apt-get update && apt-get install -y bsdutils python3-dev python-pip \
@@ -15,3 +15,7 @@ RUN cd /tinyusdz/tests/fuzzer && \
     cd build && \
     ninja && \
     cp fuzz_usdaparser /fuzz_usdaparser_full
+
+FROM ubuntu:18.04
+
+COPY --from=builder /fuzz_usdaparser_full /
